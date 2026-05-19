@@ -1,0 +1,130 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+:root {
+  --bg: #f4f3f0;
+  --surface: #ffffff;
+  --text: #1c1c1c;
+  --muted: #6b6b6b;
+  --border: #e6e4df;
+  --accent: #2f2f2f;
+  --accent-soft: #eceae4;
+  --equals: #1c1c1c;
+  --equals-text: #ffffff;
+  --shadow: 0 24px 48px rgba(28, 28, 28, 0.08);
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+
+.app {
+  min-height: 100%;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+}
+
+.calculator {
+  width: min(100%, 320px);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  box-shadow: var(--shadow);
+  padding: 20px;
+}
+
+.display {
+  display: block;
+  width: 100%;
+  min-height: 88px;
+  margin-bottom: 16px;
+  padding: 16px 12px 8px;
+  border: none;
+  background: transparent;
+  text-align: right;
+  font-size: clamp(2rem, 8vw, 3rem);
+  font-weight: 300;
+  letter-spacing: -0.02em;
+  color: var(--text);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.display.error {
+  color: #b42318;
+  font-size: 1.5rem;
+}
+
+.keys {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+.key {
+  height: 56px;
+  border: none;
+  border-radius: 16px;
+  background: var(--accent-soft);
+  color: var(--text);
+  font-size: 1.125rem;
+  cursor: pointer;
+  transition: transform 0.08s ease, background 0.15s ease;
+}
+
+.key:hover {
+  filter: brightness(0.98);
+}
+
+.key:active {
+  transform: scale(0.97);
+}
+
+.key-fn {
+  background: #f7f6f3;
+  color: var(--muted);
+}
+
+.key-op {
+  background: var(--accent);
+  color: #fff;
+}
+
+.key-op.active {
+  background: #fff;
+  color: var(--accent);
+  outline: 2px solid var(--accent);
+}
+
+.key-zero {
+  grid-column: span 2;
+}
+
+.key-equals {
+  background: var(--equals);
+  color: var(--equals-text);
+}
+
+@media (max-width: 360px) {
+  .calculator {
+    padding: 16px;
+  }
+
+  .key {
+    height: 52px;
+    border-radius: 14px;
+  }
+}
